@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Analysis & Design | Project Showcase | NMU</title>
+  <meta name="description"
+    content="System Analysis & Design course project showcase — New Mansoura University, Faculty of Computer Science & Engineering">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ========== SIDE NAVIGATION ========== -->
+  <nav class="side-nav" id="sideNav">
+    <a href="#hero" class="nav-dot active" data-section="hero" aria-label="Home">
+      <span class="nav-tooltip">Home</span>
+    </a>
+    <a href="#project" class="nav-dot" data-section="project" aria-label="Project">
+      <span class="nav-tooltip">Project</span>
+    </a>
+    <a href="#team" class="nav-dot" data-section="team" aria-label="Team">
+      <span class="nav-tooltip">Team</span>
+    </a>
+  </nav>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section id="hero" class="section hero-section">
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-logo reveal">
+        <img src="assets/logo.png" alt="New Mansoura University — Faculty of Computer Science & Engineering">
+      </div>
+      <div class="hero-text">
+        <h2 class="uni-name reveal" data-delay="200">
+          <span class="en">New Mansoura University</span>
+        </h2>
+        <p class="faculty-name reveal" data-delay="400">
+
+          <span class="en">Faculty of Computer Science &amp; Engineering</span>
+        </p>
+        <div class="hero-divider reveal" data-delay="600"></div>
+        <h1 class="course-title reveal" data-delay="700">System Analysis &amp; Design</h1>
+        <div class="tagline reveal" data-delay="1000">
+          <span id="typewriter"></span><span class="type-cursor">|</span>
+        </div>
+        <p class="supervisor reveal" data-delay="1100">Supervised by <strong>ENG: Abdallah Amir</strong></p>
+      </div>
+      <a href="#project" class="scroll-cta reveal" data-delay="1200">
+        <span>Explore Project</span>
+        <div class="scroll-arrow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 10l5 5 5-5" />
+          </svg>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ========== PROJECT SECTION ========== -->
+  <section id="project" class="section project-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-badge">Our Work</span>
+        <h2 class="section-title">Project Documentation</h2>
+        <p class="section-subtitle">Explore the three phases of our System Analysis &amp; Design project</p>
+        <div class="title-line"></div>
+      </div>
+
+      <div class="phase-grid">
+
+        <!-- Phase 1 -->
+        <div class="phase-card reveal" data-delay="200" data-tilt>
+          <div class="phase-number"><span>1</span></div>
+          <div class="card-phase">Phase One</div>
+          <ul class="card-reqs">
+            <li>Select an appropriate SDLC Approach (plan-driven or agile), explain it, and discuss why you chose it.
+            </li>
+            <li>Scheduling &amp; Planning: Gantt Chart, Network, WBS, Task Usage, Resources, RBS, Resource Usage.</li>
+            <li>Discuss how to deal with the client, gather requirements, and get the most suitable feedback
+              (Requirement Gathering).</li>
+          </ul>
+          <div class="card-actions">
+            <button class="btn btn-primary" onclick="openPDF('assets/pdfs/part1.pdf','Phase 1')">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
+              </svg>
+              View Document
+            </button>
+          </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="phase-card reveal" data-delay="400" data-tilt>
+          <div class="phase-number"><span>2</span></div>
+          <div class="card-phase">Phase Two</div>
+          <ul class="card-reqs">
+            <li>Requirement Deterministic (Functional &amp; Non-Functional)</li>
+            <li>Business Model</li>
+            <li>Data Flow Diagram (DFD)</li>
+            <li>Entity Relationship Diagram (ERD)</li>
+            <li>Database Schema</li>
+            <li>Use Case Diagram</li>
+            <li>Use Case Scenario</li>
+          </ul>
+          <div class="card-actions">
+            <button class="btn btn-primary" onclick="openPDF('assets/pdfs/part2.pdf','Phase 2')">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
+              </svg>
+              View Document
+            </button>
+          </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="phase-card reveal" data-delay="600" data-tilt>
+          <div class="phase-number"><span>3</span></div>
+          <div class="card-phase">Phase Three</div>
+          <ul class="card-reqs">
+            <li>Activity Diagram</li>
+            <li>Class Diagram</li>
+            <li>Sequence Diagram</li>
+            <li>Architecture View (Logical View – Physical View – Deployment View)</li>
+            <li>State Machine Diagram</li>
+            <li>UI Design</li>
+          </ul>
+          <div class="card-actions">
+            <button class="btn btn-primary" onclick="openPDF('assets/pdfs/part3.pdf','Phase 3')">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
+              </svg>
+              View Document
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TEAM SECTION ========== -->
+  <section id="team" class="section team-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-title">Team Members</h2>
+        <div class="title-line"></div>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card reveal" data-delay="100">
+          <div class="team-avatar">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="white" stroke-width="1.5"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          </div>
+          <h3 class="member-name">Khaled Abdelnasser Mohamed Elgedawy</h3>
+        </div>
+        <div class="team-card reveal" data-delay="200">
+          <div class="team-avatar">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="white" stroke-width="1.5"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          </div>
+          <h3 class="member-name">Youssef Ahmed Yehia Ahmed</h3>
+        </div>
+        <div class="team-card reveal" data-delay="300">
+          <div class="team-avatar">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="white" stroke-width="1.5"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          </div>
+          <h3 class="member-name">Omar Hesham Fathy Ghonim</h3>
+        </div>
+        <div class="team-card reveal" data-delay="400">
+          <div class="team-avatar">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="white" stroke-width="1.5"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          </div>
+          <h3 class="member-name">Nourhan Wael Ibrahim Mohamed</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- ========== PDF MODAL ========== -->
+  <div class="modal-overlay" id="pdfModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3 id="modalTitle">Document Viewer</h3>
+        <button class="modal-close" onclick="closePDF()" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  </script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
