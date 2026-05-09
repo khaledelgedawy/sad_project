@@ -221,20 +221,34 @@ async function openPDF(src, title) {
     container.style.cssText = 'overflow-y:auto;height:100%;background:#525659;padding:10px 0;';
     body.appendChild(container);
 
-    // Render all pages
+    // Render all pages at high resolution
+    const dpr = window.devicePixelRatio || 1;
+    const renderScale = 2.5; // Base scale for sharp graphics
+
     for (let i = 1; i <= pdf.numPages; i++) {
       const page = await pdf.getPage(i);
-      const viewport = page.getViewport({ scale: 1.5 });
+
+      // Get the CSS-level viewport for layout sizing
+      const cssViewport = page.getViewport({ scale: renderScale });
+      // Get a high-res viewport for actual pixel rendering
+      const hiResViewport = page.getViewport({ scale: renderScale * dpr });
 
       const canvas = document.createElement('canvas');
-      canvas.width = viewport.width;
-      canvas.height = viewport.height;
-      canvas.style.cssText = 'display:block;margin:0 auto 10px;max-width:100%;';
+      // Internal pixel resolution (high-res)
+      canvas.width = hiResViewport.width;
+      canvas.height = hiResViewport.height;
+      // CSS display size (logical size) — keeps layout correct while canvas is crisp
+      canvas.style.width = cssViewport.width + 'px';
+      canvas.style.height = cssViewport.height + 'px';
+      canvas.style.display = 'block';
+      canvas.style.margin = '0 auto 10px';
+      canvas.style.maxWidth = '100%';
+      canvas.style.height = 'auto';
 
       container.appendChild(canvas);
 
       const ctx = canvas.getContext('2d');
-      await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+      await page.render({ canvasContext: ctx, viewport: hiResViewport }).promise;
     }
   } catch (err) {
     body.innerHTML = '<p style="color:#E74C3C;text-align:center;padding:40px;">Could not load PDF.<br>Make sure the file exists in assets/pdfs/</p>';
