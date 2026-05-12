@@ -196,73 +196,25 @@ function initCardTilt() {
   });
 }
 
-/* ---------- PDF MODAL (PDF.js) ---------- */
-let currentPdfDoc = null;
-
-async function openPDF(src, title) {
+/* ---------- PDF MODAL (iframe) ---------- */
+function openPDF(src, title) {
   const modal = document.getElementById('pdfModal');
-  const body = document.querySelector('.modal-body');
+  const frame = document.getElementById('pdfFrame');
   const modalTitle = document.getElementById('modalTitle');
   modalTitle.textContent = title || 'Document Viewer';
 
-  // Show modal immediately with loading text
-  body.innerHTML = '<p style="color:rgba(255,255,255,0.5);text-align:center;padding:40px;">Loading PDF...</p>';
+  frame.src = src;
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
-
-  try {
-    const pdfjsLib = window.pdfjsLib;
-    const pdf = await pdfjsLib.getDocument(src).promise;
-    currentPdfDoc = pdf;
-
-    // Create scrollable container for all pages
-    body.innerHTML = '';
-    const container = document.createElement('div');
-    container.style.cssText = 'overflow-y:auto;height:100%;background:#525659;padding:10px 0;';
-    body.appendChild(container);
-
-    // Render all pages at high resolution
-    const dpr = window.devicePixelRatio || 1;
-    const renderScale = 2.5; // Base scale for sharp graphics
-
-    for (let i = 1; i <= pdf.numPages; i++) {
-      const page = await pdf.getPage(i);
-
-      // Get the CSS-level viewport for layout sizing
-      const cssViewport = page.getViewport({ scale: renderScale });
-      // Get a high-res viewport for actual pixel rendering
-      const hiResViewport = page.getViewport({ scale: renderScale * dpr });
-
-      const canvas = document.createElement('canvas');
-      // Internal pixel resolution (high-res)
-      canvas.width = hiResViewport.width;
-      canvas.height = hiResViewport.height;
-      // CSS display size (logical size) — keeps layout correct while canvas is crisp
-      canvas.style.width = cssViewport.width + 'px';
-      canvas.style.height = cssViewport.height + 'px';
-      canvas.style.display = 'block';
-      canvas.style.margin = '0 auto 10px';
-      canvas.style.maxWidth = '100%';
-      canvas.style.height = 'auto';
-
-      container.appendChild(canvas);
-
-      const ctx = canvas.getContext('2d');
-      await page.render({ canvasContext: ctx, viewport: hiResViewport }).promise;
-    }
-  } catch (err) {
-    body.innerHTML = '<p style="color:#E74C3C;text-align:center;padding:40px;">Could not load PDF.<br>Make sure the file exists in assets/pdfs/</p>';
-  }
 }
 
 function closePDF() {
   const modal = document.getElementById('pdfModal');
-  const body = document.querySelector('.modal-body');
+  const frame = document.getElementById('pdfFrame');
   modal.classList.remove('active');
   document.body.style.overflow = '';
   setTimeout(() => {
-    body.innerHTML = '';
-    currentPdfDoc = null;
+    frame.src = '';
   }, 350);
 }
 
@@ -275,3 +227,4 @@ document.getElementById('pdfModal')?.addEventListener('click', e => {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closePDF();
 });
+
